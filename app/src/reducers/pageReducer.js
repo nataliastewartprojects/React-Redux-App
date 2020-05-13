@@ -1,14 +1,14 @@
 const initialState = {
-  Global: {
-    totalConfirmed: "",
-    totalDeaths: "",
-  },
-
   Countries: [
     {
-      Country: "",
-      TotalConfirmed: "",
-      TotalDeaths: "",
+      Country: "Afghanistan",
+      TotalConfirmed: 100,
+      TotalDeaths: 80,
+    },
+    {
+      Country: "Brazil",
+      TotalConfirmed: 122,
+      TotalDeaths: 30,
     },
   ],
   isFetching: false,
