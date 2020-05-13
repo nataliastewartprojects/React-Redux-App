@@ -28,4 +28,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(CovidPage, {})(CovidPage);
+export default connect(mapStateToProps, {})(CovidPage);
