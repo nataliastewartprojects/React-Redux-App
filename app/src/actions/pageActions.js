@@ -4,7 +4,9 @@ export const fetchData = () => {
   return (dispatch) => {
     dispatch({ type: "FETCH_DATA_START" });
     axios
-      .get("https://api.covid19api.com/summary")
+      .get(
+        "https://cors-anywhere.herokuapp.com/https://api.covid19api.com/summary"
+      )
       .then((res) =>
         // console.log("res from axios:", res)
         //res.data.Countries
