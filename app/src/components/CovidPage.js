@@ -1,11 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import Loader from "react-loader-spinner";
+import { fetchData } from "../actions/pageActions";
 
 const CovidPage = (props) => {
-  console.log("CovidPage - PROPS:", props);
+  // console.log("CovidPage - PROPS:", props);
+  useEffect(() => {
+    //call an action creator
+    props.fetchData();
+  }, []);
+
+  // if (props.isFetching) {
+  //   return <Loader />;
+  // }
+
   return (
     <div>
       <h1>Covid News</h1>
+      {props.isFetching && (
+        <Loader
+          type="Puff"
+          color="#00BFFF"
+          height={100}
+          width={100}
+          timeout={3000}
+        />
+      )}
       {props.Countries &&
         props.Countries.map((item) => {
           return (
@@ -31,4 +51,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(CovidPage);
+export default connect(mapStateToProps, { fetchData })(CovidPage);

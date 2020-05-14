@@ -1,14 +1,14 @@
 const initialState = {
   Countries: [
     {
-      Country: "Afghanistan",
-      TotalConfirmed: 100,
-      TotalDeaths: 80,
+      Country: "",
+      TotalConfirmed: "",
+      TotalDeaths: "",
     },
     {
-      Country: "Brazil",
-      TotalConfirmed: 122,
-      TotalDeaths: 30,
+      Country: "",
+      TotalConfirmed: "",
+      TotalDeaths: "",
     },
   ],
   isFetching: false,
@@ -17,6 +17,11 @@ const initialState = {
 
 export const pageReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "FETCH_DATA_START":
+      return {
+        ...state,
+        isFetching: true,
+      };
     default:
       return state;
   }
