@@ -5,7 +5,11 @@ export const fetchData = () => {
     dispatch({ type: "FETCH_DATA_START" });
     axios
       .get("https://api.covid19api.com/summary")
-      .then((res) => console.log("res from axios:", res))
+      .then((res) =>
+        // console.log("res from axios:", res)
+        //res.data.Countries
+        dispatch({ type: "FETCH_DATA_SUCCESS", payload: res.data.Countries })
+      )
       .catch((err) => console.log("Axios ERROR:", err));
   };
 };
