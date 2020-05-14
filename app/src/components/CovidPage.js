@@ -2,22 +2,11 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 import { fetchData } from "../actions/pageActions";
-import {
-  Card,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
 
 const CovidPage = (props) => {
   const [search, setSearch] = useState("");
 
-  console.log("CovidPage - PROPS:", props);
+  // console.log("CovidPage - PROPS:", props);
   useEffect(() => {
     //call an action creator
     props.fetchData();
@@ -50,21 +39,12 @@ const CovidPage = (props) => {
           console.log("ITEM", item);
           return (
             <div key={item.Country}>
-              <Card>
-                <CardBody>
-                  <h2>{item.Country}</h2>
-                  <CardText>Total Confirmed:{item.TotalConfirmed}</CardText>
-                  <CardText>Total Deaths:{item.TotalDeaths}</CardText>
-                </CardBody>
-              </Card>
+              <h2>{item.Country}</h2>
+              <p>Total Confirmed:{item.TotalConfirmed}</p>
+              <p>Total Deaths:{item.TotalDeaths}</p>
             </div>
           );
         })}
-
-      {/* 
-      <button className="button" onClick={props.fetchData}>
-        Fetch Data!
-      </button> */}
     </div>
   );
 };
@@ -75,16 +55,17 @@ const mapStateToProps = (state) => {
   console.log("CovidPage- state:", state);
   return {
     Countries: state.pageReducer.Countries,
-    // Countries: [
-    //   {
-    //     Country: state.pageReducer.Countries.Country,
-    //     TotalConfirmed: state.pageReducer.Countries.TotalConfirmed,
-    //     TotalDeaths: state.pageReducer.Countries.TotalDeaths,
-    //   },
-    // ],
+
     isFetching: state.pageReducer.isFetching,
     error: state.pageReducer.error,
   };
 };
 
 export default connect(mapStateToProps, { fetchData })(CovidPage);
+// Countries: [
+//   {
+//     Country: state.pageReducer.Countries.Country,
+//     TotalConfirmed: state.pageReducer.Countries.TotalConfirmed,
+//     TotalDeaths: state.pageReducer.Countries.TotalDeaths,
+//   },
+// ],
