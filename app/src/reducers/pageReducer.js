@@ -15,14 +15,7 @@ export const pageReducer = (state = initialState, action) => {
       return {
         ...state,
         Countries: action.payload,
-        // Countries: [
-        //   ...state.Countries,
-        //   {
-        //     Country: action.payload.Country,
-        //     TotalConfirmed: action.payload.TotalConfirmed,
-        //     TotalDeaths: action.payload.TotalDeaths,
-        //   },
-        // ],
+
         isFetching: false,
         error: "",
       };
@@ -30,3 +23,11 @@ export const pageReducer = (state = initialState, action) => {
       return state;
   }
 };
+// Countries: [
+//   ...state.Countries,
+//   {
+//     Country: action.payload.Country,
+//     TotalConfirmed: action.payload.TotalConfirmed,
+//     TotalDeaths: action.payload.TotalDeaths,
+//   },
+// ],
